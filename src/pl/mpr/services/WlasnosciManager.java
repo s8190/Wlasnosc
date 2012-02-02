@@ -191,5 +191,4 @@ public class WlasnosciManager {
 		db.usunWszytsko();
 		
 	}
-
 }
