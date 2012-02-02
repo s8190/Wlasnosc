@@ -36,7 +36,7 @@ public class DBManagerTest {
 		
 		dbm.usunWszytsko();
 		ArrayList<Wlasciciel> wlasciciele = dbm.wczytaj();
-		assertEquals(0, wlasciciele.size());
+		assertNull(wlasciciele.size());
 		
 	}
 	
@@ -48,7 +48,7 @@ public class DBManagerTest {
 		dbm.dodajWlasciciela(w);
 		
 		ArrayList<Wlasciciel> wlasciciele = dbm.wczytaj();
-		assertEquals(1, wlasciciele.size());
+		assertTrue(wlasciciele.size()==1);
 		
 	}
 	
@@ -76,7 +76,7 @@ public class DBManagerTest {
 		
 		ArrayList<Wlasciciel> wlasciciele = dbm.wczytaj();
 		ArrayList<Rzecz> rzeczy = wlasciciele.get(0).getRzeczy();
-		assertEquals(1, rzeczy.size());
+		assertNotNull(rzeczy.size());
 		
 	}
 	
@@ -92,7 +92,7 @@ public class DBManagerTest {
 		
 		ArrayList<Wlasciciel> wlasciciele = dbm.wczytaj();
 		ArrayList<Rzecz> rzeczy = wlasciciele.get(0).getRzeczy();
-		assertEquals(0, rzeczy.size());
+		assertFalse(rzeczy.size()==0);
 		
 	}
 	
@@ -116,5 +116,6 @@ public class DBManagerTest {
 		assertEquals(NUMER_SERYJNY, rzeczy.get(0).getNumer_seryjny());
 		assertEquals(STAN, rzeczy.get(0).getStan());
 		
-	}	
+	}
+	
 }
