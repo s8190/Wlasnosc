@@ -116,6 +116,5 @@ public class DBManagerTest {
 		assertEquals(NUMER_SERYJNY, rzeczy.get(0).getNumer_seryjny());
 		assertEquals(STAN, rzeczy.get(0).getStan());
 		
-	}
-	
+	}	
 }
