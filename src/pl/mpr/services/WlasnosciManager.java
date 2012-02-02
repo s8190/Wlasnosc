@@ -146,6 +146,16 @@ public class WlasnosciManager {
 		}
 
 	}
+	
+	public Wlasciciel SzukajWlasciciela(String tekst){
+		
+		for(Wlasciciel w: wlasciciele){
+			if(w.getNazwisko()==tekst) return w;
+		}
+		
+		return null;
+	}
+	
 
 	public void usunRzecz() {
 		
