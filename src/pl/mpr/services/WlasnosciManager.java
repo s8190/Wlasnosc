@@ -39,7 +39,7 @@ public class WlasnosciManager {
 			id = w.getId();
 			if (imie.equals(w.getImie()) && nazwisko.equals(w.getNazwisko())
 					&& adres.equals(w.getAdres()) && email.equals(w.getEmail())) {
-				System.err.println("Podany klient już istnieje");
+				System.err.println("Podany klient juĹĽ istnieje");
 				return;
 			}
 		}
@@ -49,11 +49,30 @@ public class WlasnosciManager {
 		db.dodajWlasciciela(nowy_w);
 
 	}
+	public Wlasciciel SzukajWlasciciela(){
+		System.out.println("Wpisz Nazwisko: ");
+		in = new Scanner(System.in);		
+		String tekst = in.toString();
+		for(Wlasciciel w: wlasciciele){
+		if(w.getNazwisko()==tekst) return w;
+		}
+		return null;
+		}
+	
+	public void edytujWlasciciela(){
+
+		Wlasciciel w = SzukajWlasciciela();
+		
+		System.out.println("Wprowadz poprawna wartosc: ");
+		in = new Scanner(System.in);		
+		String tekst = in.toString();
+		w.setNazwisko(tekst);
+	}
 
 	public void usunWlasciciela() {
 		
 		if (wlasciciele.isEmpty()) {
-			System.out.println("Brak właścicieli!");
+			System.out.println("Brak wĹ‚aĹ›cicieli!");
 			return;
 		}
 		
@@ -62,7 +81,7 @@ public class WlasnosciManager {
 					+ w.getNazwisko() + " Adres: " + w.getAdres()
 					+ " Adres e-mail: " + w.getEmail());
 		}
-		System.out.print("Podaj ID właściciela do usunięcia: ");
+		System.out.print("Podaj ID wĹ‚aĹ›ciciela do usuniÄ™cia: ");
 		int wybrane = in.nextInt();
 		
 		for (Wlasciciel w : wlasciciele) {
@@ -78,7 +97,7 @@ public class WlasnosciManager {
 	public void pokarzWlascicieli() {
 
 		if (wlasciciele.isEmpty()) {
-			System.out.println("Brak właścicieli!");
+			System.out.println("Brak wĹ‚aĹ›cicieli!");
 			return;
 		}
 			
@@ -91,7 +110,7 @@ public class WlasnosciManager {
 			for (Rzecz r : rzeczy) {
 				String stan = "nowy";
 				if (r.getStan() == false) {
-					stan = "używany";
+					stan = "uĹĽywany";
 				}
 				
 				System.out.println("   ID: " + r.getId() + " Rzecz: " + r.getRzecz() + " Numer seryjny: " + r.getNumer_seryjny() + " Stan: " + stan);
@@ -104,7 +123,7 @@ public class WlasnosciManager {
 	public void dodajRzecz() {
 		
 		if (wlasciciele.isEmpty()) {
-			System.out.println("Brak właścicieli!");
+			System.out.println("Brak wĹ‚aĹ›cicieli!");
 			return;
 		}
 		
@@ -113,7 +132,7 @@ public class WlasnosciManager {
 					+ w.getNazwisko() + " Adres: " + w.getAdres()
 					+ " Adres e-mail: " + w.getEmail());
 		}
-		System.out.print("Podaj ID właściciela: ");
+		System.out.print("Podaj ID wĹ‚aĹ›ciciela: ");
 		int wybrane = in.nextInt();
 		
 		int id = 0;
@@ -131,7 +150,7 @@ public class WlasnosciManager {
 				String rzecz = in.next();
 				System.out.print("Podaj numer seryjny: ");
 				int numer_seryjny = in.nextInt();
-				System.out.print("Podaj stan [nowy lub używany]: ");
+				System.out.print("Podaj stan [nowy lub uĹĽywany]: ");
 				String stan = in.next();
 				boolean s = false;
 				if(stan.equals("nowy")) {
@@ -146,21 +165,11 @@ public class WlasnosciManager {
 		}
 
 	}
-	
-	public Wlasciciel SzukajWlasciciela(String tekst){
-		
-		for(Wlasciciel w: wlasciciele){
-			if(w.getNazwisko()==tekst) return w;
-		}
-		
-		return null;
-	}
-	
 
 	public void usunRzecz() {
 		
 		if (wlasciciele.isEmpty()) {
-			System.out.println("Brak właścicieli!");
+			System.out.println("Brak wĹ‚aĹ›cicieli!");
 			return;
 		}
 		
@@ -170,14 +179,14 @@ public class WlasnosciManager {
 			for (Rzecz r : rzeczy) {
 				String stan = "nowy";
 				if (r.getStan() == false) {
-					stan = "używany";
+					stan = "uĹĽywany";
 				}
 
 				System.out.println("ID: " + r.getId() + " Rzecz: " + r.getRzecz() + " Numer seryjny: " + r.getNumer_seryjny() + " Stan: " + stan);
 			}
 		}
 		
-		System.out.print("Podaj ID rzeczy do usunięcia: ");
+		System.out.print("Podaj ID rzeczy do usuniÄ™cia: ");
 		int wybrane = in.nextInt();
 		
 		for (Wlasciciel w : wlasciciele) {
@@ -201,4 +210,5 @@ public class WlasnosciManager {
 		db.usunWszytsko();
 		
 	}
+
 }
