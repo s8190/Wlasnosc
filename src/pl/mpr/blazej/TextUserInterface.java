@@ -16,11 +16,13 @@ public class TextUserInterface {
 			printMenu();
 			switch (readchoice()) {
 			case ADDOWNER: wm.dodajWlasciciela(); break;
-			case DELOWNER: wm.usunWlasciciela(); break;
+			case DELOWNER: wm.usunWlasciciela(); break;			
 			case SHOWOWNER: wm.pokarzWlascicieli(); break;
 			case ADDTHING: wm.dodajRzecz(); break;
 			case DELTHING: wm.usunRzecz(); break;
 			case DELALL: wm.usunWszytsko(); break;
+			case SEARCHOWNER: wm.SzukajWlasciciela().; break;
+			case EDITOWNER: wm.edytujWlasciciela(); break;
 			case END: printGoodbyeMsg(); return;
 			case NONE: continue;
 			}
@@ -33,7 +35,7 @@ public class TextUserInterface {
 		try {
 			choice = in.nextInt();
 		} catch (InputMismatchException e) {
-			System.err.println("Wprowadzona wartość jest błędna, spróbuj ponownie.");
+			System.err.println("Wprowadzona wartoĹ›Ä‡ jest bĹ‚Ä™dna, sprĂłbuj ponownie.");
 			return Action.NONE;
 		}
 		switch (choice) {
@@ -43,25 +45,26 @@ public class TextUserInterface {
 		case 4: return Action.ADDTHING;
 		case 5: return Action.DELTHING;
 		case 6: return Action.DELALL;
+		case 7: return Action.SEARCHOWNER;
+		case 8: return Action.EDITOWNER;
 		case 0: return Action.END;
 		default: return Action.NONE;
 		}
 	}
 	
 	private void printWelcomeMsg() {
-		System.out.println("Witamy w menedżerze własności\n");
+		System.out.println("Witamy w menedĹĽerze wĹ‚asnoĹ›ci\n");
 	}
 
 	private void printMenu() {
-		System.out.print("Wybierz :\n" + "1. Dodaj właściciela\n"
-				+ "2. Usuń właściciela\n" + "3. Wyświetl właścicielów\n"
-				+ "4. Dodaj rzecz\n" + "5. Usuń rzecz\n"
-				+ "6. Usun wszytsko\n" + "0. Wyście\n" + "> ");
+		System.out.print("Wybierz :\n" + "1. Dodaj wĹ‚aĹ›ciciela\n"
+				+ "2. UsuĹ„ wĹ‚aĹ›ciciela\n" + "3. WyĹ›wietl wĹ‚aĹ›cicielĂłw\n"
+				+ "4. Dodaj rzecz\n" + "5. UsuĹ„ rzecz\n"
+				+ "6. Usun wszytsko\n" + "7. Szukaj Wlasciciela" + "8. Edytuj Wlasciciela" + "0. WyĹ›cie\n" + "> ");
 	}
 	
 	private void printGoodbyeMsg() {
-		System.out.println("Miłego dnia\n");
+		System.out.println("MiĹ‚ego dnia\n");
 	}
 	
 }
-
